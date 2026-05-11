@@ -5,75 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buscador de Música</title>
 
-  <style>
-
-    body{
-      background:#121212;
-      color:white;
-      font-family:Arial;
-      padding:20px;
-    }
-
-    h1{
-      text-align:center;
-    }
-
-    .search-box{
-      display:flex;
-      justify-content:center;
-      margin-bottom:30px;
-    }
-
-    input{
-      width:300px;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      outline:none;
-      font-size:16px;
-    }
-
-    button{
-      padding:12px 20px;
-      margin-left:10px;
-      border:none;
-      border-radius:10px;
-      background:#1DB954;
-      color:white;
-      cursor:pointer;
-      font-weight:bold;
-    }
-
-    #resultado{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:20px;
-    }
-
-    .card{
-      background:#1e1e1e;
-      padding:15px;
-      border-radius:15px;
-      text-align:center;
-      transition:0.3s;
-    }
-
-    .card:hover{
-      transform:scale(1.03);
-    }
-
-    img{
-      width:100%;
-      border-radius:10px;
-    }
-
-    audio{
-      width:100%;
-      margin-top:10px;
-    }
-
-  </style>
-
 </head>
 <body>
 
@@ -86,47 +17,7 @@
 
   <div id="resultado"></div>
 
-  <script>
-
-    async function buscar(){
-
-      const texto = document.getElementById("search").value;
-
-      const url = `https://corsproxy.io/?https://api.deezer.com/search?q=${texto}`;
-
-      const res = await fetch(url);
-q
-      const data = await res.json();
-
-      const canciones = data.data;
-
-      let html = "";
-
-      canciones.forEach(song => {
-
-        html += `
-          <div class="card">
-
-            <img src="${song.album.cover_medium}">
-
-            <h3>${song.title}</h3>
-
-            <p>${song.artist.name}</p>
-
-            <audio controls>
-              <source src="${song.preview}" type="audio/mp3">
-            </audio>
-
-          </div>
-        `;
-
-      });
-
-      document.getElementById("resultado").innerHTML = html;
-
-    }
-
-  </script>
-
+  <script src="art.js"></script>
+  <link rel="stylesheet" href="diseño.css">
 </body>
 </html>
